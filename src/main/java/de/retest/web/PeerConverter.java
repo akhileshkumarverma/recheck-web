@@ -39,9 +39,6 @@ class PeerConverter {
 		for ( final Map.Entry<String, Map<String, Object>> entry : data.entrySet() ) {
 			final String path = entry.getKey();
 			final WebData webData = new WebData( entry.getValue() );
-			if ( WebDataFilter.shouldIgnore( webData ) ) {
-				continue;
-			}
 			convertToPeer( path, webData );
 		}
 
