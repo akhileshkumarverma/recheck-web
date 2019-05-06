@@ -24,7 +24,10 @@ public abstract class By extends org.openqa.selenium.By {
 			return null;
 		}
 		final Alignment alignment = Alignment.createAlignment( lastExpectedState, lastActualState );
-		return alignment.get( result );
+		final Element actualElement = alignment.get( result );
+		// TODO Once we have recheck 1.1.0 released, do that:
+		actualElement.applyRetestId( result.getRetestId() );
+		return actualElement;
 	}
 
 	private static Element findElement( final List<Element> children, final Predicate<Element> predicate ) {
